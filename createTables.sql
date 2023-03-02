@@ -71,11 +71,12 @@ CREATE TABLE Anime_Attributes_Only(
     background text,
     premiered text,
     broadcast text,
-    related text,
+    related_to text,
     opening_theme text,
     ending_theme text,
     score float,
-    num_votes int
+    num_votes int,
+    related_as text
 );
 
 
