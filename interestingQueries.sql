@@ -13,7 +13,7 @@
 SET search_path TO anime;
 
 /*
- How many drama animes has Animax produced ?
+    How many drama animes has Animax produced ?
  */
 SELECT a.anime_id, g.genre, p.producer
 FROM anime a
@@ -26,9 +26,9 @@ AND g.genre = 'Drama';
 
 
 /*
- Which users have been watching comedy genre animes in India
- */
-SELECT DISTINCT (u.user_id, u.user_location, g.genre)
+    Which users have been watching comedy genre animes in India ?
+*/
+SELECT DISTINCT u.user_id, u.username, u.user_location, g.genre
 FROM users u
     INNER JOIN watches w ON u.user_id = w.user_id
     INNER JOIN has_genre hg ON w.anime_id = hg.anime_id
@@ -38,7 +38,7 @@ AND genre = 'Comedy';
 
 
 /*
-    Which licensor licensed the most anime's between post 2000s
+    Which licensor licensed the most anime's post 2000s?
  */
 SELECT licensor.licensor_id AS ID, licensor.licensor, count(licensed_by.anime_id)
 FROM licensor
@@ -50,6 +50,8 @@ GROUP BY licensor.licensor_id, licensor.licensor ORDER BY count(licensed_by.anim
 
 /*
     A count of 9+ rated anime's produced by a studio
+
+    "How many studios have produced 9+ rated animes and whats the count ?"
  */
 SELECT studio.studio, count(anime.score)
 FROM created_by INNER JOIN studio ON created_by.studio_id = studio.studio_id
