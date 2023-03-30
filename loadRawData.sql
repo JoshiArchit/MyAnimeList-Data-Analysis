@@ -12,11 +12,8 @@
 -- THIS SCRIPT LOADS DATA FROM RAW DATASETS INTO THE DATABASE
 ------------------------------------------------------------
 
--- create anime schema
-create schema anime;
 
--- set search path to anime schema
-set search_path to anime;
+
 
 -- create raw user data
 CREATE table USERS_Raw(
@@ -40,7 +37,7 @@ CREATE table USERS_Raw(
 );
 
 -- copy raw user data from the file into the table
-COPY anime."users_raw" FROM '/Users/Athina/Public/UserList.csv' DELIMITER ',' CSV HEADER;
+COPY users_raw FROM 'D:\Projects\CSCI620 - Project\Dataset\UserList.csv' DELIMITER ',' CSV HEADER;
 
 ------------------------------------------------------------
 
@@ -80,7 +77,7 @@ CREATE table AnimeList_Raw(
 );
 
 -- copy raw anime data from the file into the table
-COPY anime."animelist_raw" FROM '/Users/Athina/Public/AnimeList.csv' DELIMITER ',' CSV HEADER;
+COPY animelist_raw FROM 'D:\Projects\CSCI620 - Project\Dataset\AnimeList.csv' DELIMITER ',' CSV HEADER;
 
 ------------------------------------------------------------
 
@@ -100,4 +97,4 @@ CREATE table User_Anime_Raw(
 );
 
 -- copy raw user_anime data from the file into the table
-COPY anime."user_anime_raw" FROM '/Users/Athina/Public/UserAnimeList.csv' DELIMITER ',' CSV HEADER;
+COPY user_anime_raw FROM 'D:\Projects\CSCI620 - Project\Dataset\UserAnimeList.csv' DELIMITER ',' CSV HEADER;
