@@ -36,7 +36,6 @@ def apriori(dbconnect):
     query = f'create table public.l{level} as select genre_id,count(*) ' \
             'from public.has_genre hg ' \
             'group by genre_id ' \
-            f'having count(*)> {minimum_support} ' \
             'order by genre_id '
     cursor.execute(query)
     dbconnect.commit()
