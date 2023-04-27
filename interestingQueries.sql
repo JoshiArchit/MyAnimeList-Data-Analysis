@@ -28,13 +28,14 @@ AND g.genre = 'Drama';
 /*
     Which users have been watching comedy genre animes in India ?
 */
-SELECT DISTINCT u.user_id, u.username, u.user_location, g.genre
+select count(*) as user_count from
+(SELECT DISTINCT u.user_id, u.username, u.user_location, g.genre
 FROM users u
     INNER JOIN watches w ON u.user_id = w.user_id
     INNER JOIN has_genre hg ON w.anime_id = hg.anime_id
     INNER JOIN genre g ON g.genre_id = hg.genre_id
 WHERE u.user_location LIKE '%India'
-AND genre = 'Comedy';
+AND genre = 'Comedy') as x
 
 
 /*
@@ -56,7 +57,9 @@ GROUP BY licensor.licensor_id, licensor.licensor ORDER BY count(licensed_by.anim
 SELECT studio.studio, count(anime.score)
 FROM created_by INNER JOIN studio ON created_by.studio_id = studio.studio_id
                 INNER JOIN anime ON created_by.anime_id = anime.anime_id
-WHERE score > 9.0 GROUP BY studio.studio ORDER BY count(anime.score) DESC;
+WHERE score > 9.0
+GROUP BY studio.studio
+ORDER BY count(anime.score) DESC;
 
 
 /*

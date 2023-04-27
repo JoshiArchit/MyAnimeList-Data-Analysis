@@ -13,7 +13,6 @@
 ------------------------------------------------------------
 
 -- set search path to the anime schema
-SET search_path to anime;
 
 ------------------------------------------------------------
 -- CREATING MAIN TABLES
