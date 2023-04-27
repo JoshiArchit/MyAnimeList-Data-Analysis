@@ -1,5 +1,5 @@
 ------------------------------------------------------------
--- CSCI-620: INTRO TO BIG DATA
+-- CSCI-620: INTRODUCTION TO BIG DATA
 -- PROJECT PHASE 1
 -- FILENAME: loadRawData.sql
 -- AUTHORS: ATHINA STEWART  as1986
