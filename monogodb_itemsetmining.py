@@ -1,5 +1,5 @@
 """
-CSCI-620 : Introduction to Big Data : Project Phase 2
+CSCI-620 - Introduction to Big Data : Project Phase 2
 Authors:
 Archit Joshi (aj6082)
 Athina Stewart (as1896)
