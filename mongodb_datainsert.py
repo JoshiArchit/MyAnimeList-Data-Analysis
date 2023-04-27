@@ -15,8 +15,8 @@ import json
 def connect_to_db(list_of_animes, list_of_users):
     client = MongoClient()
     db = client["myanimelist"]
-    # collection = db["users"]
-    # collection.insert_many(list_of_users)
+    collection = db["users"]
+    collection.insert_many(list_of_users)
     collection1 = db["animes"]
     collection1.insert_many(list_of_animes)
     client.close()
@@ -27,20 +27,17 @@ def read_users_collection():
     Read the json generated through users.json
     :return:
     """
-    with open("E:\\users.json", encoding = "utf8") as users_json:
-        list_of_users = []
-        for i in users_json:
-            print(i)
-            i = i
-            i = json.loads(i)
-            cleaned_row = {}
-            for key, value in i.items():
-                if value is not None:
-                    if type(value) == str:
-                        cleaned_row[key] = value
-                    else:
-                        cleaned_row[key] = value
-            list_of_users.append(cleaned_row)
+    data = open("E:\\users.json")
+    users_json = json.load(data)
+    list_of_users = []
+    for i in users_json:
+        print(i)
+        cleaned_row = {}
+        for key, value in i.items():
+            if value is not None:
+                cleaned_row[key] = value
+        list_of_users.append(cleaned_row)
+    data.close()
     return list_of_users
 
 
@@ -49,16 +46,17 @@ def read_animes_collection():
     Read the json generated through users.json
     :return:
     """
-    with open("E:\\animes.json", encoding= 'utf8') as animes_json:
-        list_of_animes = []
-        for i in animes_json:
-            print(i)
-            i = json.loads(i)
-            cleaned_row = {}
-            for key, value in i.items():
-                if value is not None:
-                    cleaned_row[key] = value
-            list_of_animes.append(cleaned_row)
+    anime_data = open("E:\\animes.json", encoding= 'utf-8')
+    animes_json = json.load(anime_data)
+    list_of_animes = []
+    for i in animes_json:
+        print(i)
+        cleaned_row = {}
+        for key, value in i.items():
+            if value is not None:
+                cleaned_row[key] = value
+        list_of_animes.append(cleaned_row)
+    anime_data.close()
     return list_of_animes
 
 
